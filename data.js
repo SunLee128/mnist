@@ -93,7 +93,7 @@ export class MnistData {
     this.trainLabels = this.datasetLabels.slice(0, NUM_CLASSES * NUM_TRAIN_ELEMENTS);
     this.testLabels = this.datasetLabels.slice(NUM_CLASSES * NUM_TRAIN_ELEMENTS);
   }
-
+  //returns a random batch of images and their labels from the training set.
   nextTrainBatch (batchSize) {
     return this.nextBatch(batchSize, [ this.trainImages, this.trainLabels ], () => {
       this.shuffledTrainIndex = (this.shuffledTrainIndex + 1) % this.trainIndices.length;
@@ -101,6 +101,7 @@ export class MnistData {
     });
   }
 
+  //returns a batch of images and their labels from the test set
   nextTestBatch (batchSize) {
     return this.nextBatch(batchSize, [ this.testImages, this.testLabels ], () => {
       this.shuffledTestIndex = (this.shuffledTestIndex + 1) % this.testIndices.length;
